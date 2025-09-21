@@ -7,7 +7,7 @@
 /* Hero Section */
 
 .hero {
-    background-image: url("assets/hero_image.jpg");
+    background-image: url("../assets/hero_image.jpg");
     background-size: 100% auto; 
     background-position: center;
     background-attachment: fixed;
@@ -175,6 +175,7 @@
 
 /* Visual Column */
 .visual-column {
+    padding-top: 15px;
     width: 75%;
 }
 
@@ -193,7 +194,7 @@
     height: auto;
     object-fit: cover;  
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 100px rgba(46, 38, 49, 0.9);
 }
 
 .visual-column .image-caption {
@@ -239,5 +240,6 @@
     font-size: 12px;
     line-height: 1.2;
 }
+
 
 
