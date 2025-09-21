@@ -46,16 +46,55 @@ export async function getTrainArrivals(req, res) {
             new Uint8Array(buffer)
         );
 
-        const station = {}
+        const stations = {}
         const now = Date.now();
 
         feed.entity.forEach((entity) => {
             if (!entity.tripUpdate) return;
             if (entity.tripUpdate.trip.routeId !== trainLine) return;
 
-            entity.tripUpdate.stopTimeUpdate.
+            entity.tripUpdate.stopTimeUpdate.forEach((stop) => {
+                const fullStopId = stop.stopId;
+                const stopId = fullStopId.slice(0, -1);
+                const letter = fullStopId.slice(-1);
+                const direction = letter === 'N' ? 'Northbound' : (letter === 'S' ? 'Southbound' : 'Unknown');
+                
+                const arrivalTime = stop.arrival?.time;
+                const trainDate = new Date(arrivalTime * 1000);
+                const minutesAway = Math.round((trainDate - now) / 60000);
+
+                if (minutesAway < 0) {
+                    return;
+                }
+
+                if (!stations[stopId]) {
+                    stations[stopId] = {
+                        northbound: [],
+                        southbound: []
+                    };
+                }
+
+                if (direction === 'Northbound') {
+                    stations[stopId].northbound.push(minutesAway);
+                } else if (direction === 'Southbound') {
+                    stations[stopId].southbound.push(minutesAway);
+                }
+
+                stations[stopId].northbound.sort((a, b) => a - b);
+                stations[stopId].southbound.sort((a, b) => a - b);
+
+            });
         });
         
+        const result = Object.keys(stations).map(stopId => {
+            return {
+                stopId,
+                stopName: stationMap.get(stopId) || 'Unknown Station',
+                northbound: stations[stopId].northbound.slice(0, 3),
+                southbound: stations[stopId].southbound.slice(0, 3),
+            }
+        });
+
 
         res.json({
             trainLine,
