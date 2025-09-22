@@ -5,24 +5,21 @@ import fs from 'fs';
 
 console.log("Loading station names...");
 
-let stationMap = new Map();
+const stationMap = new Map();
+const orderedStations = new Map();
 
 try {
-    const data = fs.readFileSync('./data/stops.csv', 'utf8');
-    const lines = data.split('\n');
+    const train_data = fs.readFileSync('./data/train_data.json', 'utf8');
+    const trainData = JSON.parse(train_data);
 
-    for (let i=1; i<lines.length; i++) {
-        const parts = lines[i].split(',');
-        const stopId = parts[0];
-
-        if (stopId.endsWith('N') || stopId.endsWith('S')) {
-            continue;
-        }
-        const stopName = parts[1];
+    for (const [stopId, stopName] of Object.entries(trainData.stationNames)) {
         stationMap.set(stopId, stopName);
     }
 
-    console.log("Station names loaded:", stationMap.size, "stations.");
+    for (const [route, stops] of Object.entries(trainData.orderedRoutes)) {
+        orderedStations.set(route, stops);
+    }
+
 } catch (error) {
     console.error("Error loading station names:", error);
 }
@@ -85,24 +82,32 @@ export async function getTrainArrivals(req, res) {
 
             });
         });
-        
-        const result = Object.keys(stations).map(stopId => {
-            return {
-                stopId,
-                stopName: stationMap.get(stopId) || 'Unknown Station',
-                northbound: stations[stopId].northbound.slice(0, 3),
-                southbound: stations[stopId].southbound.slice(0, 3),
-            }
-        });
 
+        const result = [];
+        const orderedStops = orderedStations.get(trainLine);
+        if (orderedStops) {
+            for (const stopId of orderedStops) {
+                if (stations[stopId]) {
+                    result.push({
+                        stopId,
+                        stopName: stationMap.get(stopId) || 'Unknown Station',
+                        northbound: stations[stopId].northbound.slice(0, 3),
+                        southbound: stations[stopId].southbound.slice(0, 3),
+                    });
+                }
+            }
+        }
 
         res.json({
             trainLine,
             stations: result,
         })
+
+        // res.json(feed);
     } catch (error) {
         console.error("Error fetching train arrivals:", error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 }
+
 
