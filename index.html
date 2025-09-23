@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/section_6.css">
     <title>Document</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
         <div class="container">
             <header class="section-header">
                 <div class="step-line">
-                    <span class="step-number">1</span>
+                    <span class="step-number red">1</span>
                     <span class="station-name">TIMES SQUARE - 42 St</span>
                     <span class="progress-dots">● ○ ○ ○ ○ ○</span>
                 </div>
@@ -54,7 +55,7 @@
         <div class="container">
             <header class="section-header">
                 <div class="step-line">
-                    <span class="step-number">2</span>
+                    <span class="step-number red">2</span>
                     <span class="station-name">GRAND CENTRAL - 42 St</span>
                     <span class="progress-dots">● ● ○ ○ ○ ○</span>
                 </div>
@@ -82,6 +83,51 @@
         </div>
     </section>
 
+    <section class="light-section" id="section-6">
+        <div class="container">
+            <header class="section-header">
+                <div class="step-line">
+                    <span class="step-number green">6</span>
+                    <span class="station-name">GRAND CENTRAL - 42 St</span>
+                    <span class="progress-dots">● ● ● ● ● ●</span>
+                </div>
+                <h2 class="section-title">Live Subway Tracker</h2>
+            </header>
+
+            <div class="train-button-container">
+                <h2>Select a train:</h2>
+                <button class="train-button red">1</button>
+                <button class="train-button red">2</button>
+                <button class="train-button red">3</button>
+                <button class="train-button green">4</button>
+                <button class="train-button green">5</button>
+                <button class="train-button green">6</button>
+                <button class="train-button purple">7</button>
+                <button class="train-button yellow">N</button>
+                <button class="train-button yellow">Q</button>
+                <button class="train-button yellow">R</button>
+                <button class="train-button yellow">W</button>
+                <button class="train-button orange">B</button>
+                <button class="train-button orange">F</button>
+                <button class="train-button orange">D</button>
+                <button class="train-button orange">M</button>
+            </div>
+
+            <div class="modal-overlay" id="modal-overlay"></div>
+            
+            <div class="modal " id="modal">
+                <button class="close-button">&times;</button>
+                <h2 class="modal-title">Loading...</h2>
+
+                <div class="train-line-container">
+                    <div class="train-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <script src="script/animate_columns.js"></script>
+    <script src="script/live_tracker.js"></script>
 </body>
 </html>

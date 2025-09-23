@@ -83,7 +83,6 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: rgb(255, 0, 0);
     color: white;
 
     display: flex;
@@ -94,6 +93,19 @@
     font-weight: bold;
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
+
+.step-number.red {
+    background-color: #D82233;
+}
+
+.step-number.green {
+    background-color: #009952;  
+}
+
+.step-number.purple {
+    background-color: #9A38A1;  
+}
+
 
 .progress-dots {
     font-size: 18px;
