@@ -46,11 +46,11 @@ export async function getTrainArrivals(req, res) {
         const stations = {}
         const now = Date.now();
 
-        feed.entity.forEach((entity) => {
-            if (!entity.tripUpdate) return;
-            if (entity.tripUpdate.trip.routeId !== trainLine) return;
+        for (const entity of feed.entity) {
+            if (!entity.tripUpdate) continue;;
+            if (entity.tripUpdate.trip.routeId !== trainLine) continue;
 
-            entity.tripUpdate.stopTimeUpdate.forEach((stop) => {
+            for (const stop of entity.tripUpdate.stopTimeUpdate) {
                 const fullStopId = stop.stopId;
                 const stopId = fullStopId.slice(0, -1);
                 const letter = fullStopId.slice(-1);
@@ -60,8 +60,8 @@ export async function getTrainArrivals(req, res) {
                 const trainDate = new Date(arrivalTime * 1000);
                 const minutesAway = Math.round((trainDate - now) / 60000);
 
-                if (minutesAway < 0) {
-                    return;
+                if (minutesAway < 0 || isNaN(minutesAway)) {
+                    continue;
                 }
 
                 if (!stations[stopId]) {
@@ -80,8 +80,8 @@ export async function getTrainArrivals(req, res) {
                 stations[stopId].northbound.sort((a, b) => a - b);
                 stations[stopId].southbound.sort((a, b) => a - b);
 
-            });
-        });
+            };
+        };
 
         const result = [];
         const orderedStops = orderedStations.get(trainLine);
