@@ -73,13 +73,13 @@ body {
 .light-section {
     background: linear-gradient(135deg, #E0D4B8 0%, #C8BCA4 100%);
     color: #2C2640;
-    min-height: 120vh;
+    min-height: 110vh;
 }
 
 .dark-section {
     background: linear-gradient(135deg, #2C2640 0%, #1A1625 100%);
     color: #F0E8DC;
-    min-height: 120vh;
+    min-height: 110vh;
 }
 
 .container {
@@ -133,7 +133,7 @@ body {
     font-size: 18px;
     letter-spacing: 2px;    
     color: #ff9900;         
-    opacity: 1.2;           
+    opacity: 1;          
 }
 
 .station-name {

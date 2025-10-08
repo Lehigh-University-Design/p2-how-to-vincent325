@@ -14,8 +14,8 @@
     top: -60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background-color: #9A38A1;
     border-radius: 50%;
     display: flex;
@@ -26,7 +26,6 @@
     color: white;
     font-family: 'Helvetica', 'Arial', sans-serif;
     box-shadow: 0 4px 12px rgba(154, 56, 161, 0.5);
-    border: 3px solid rgba(255, 255, 255, 0.9);
 }
 
 .progress-line-bg {
@@ -83,5 +82,27 @@
     background-color: #9A38A1;
     border-color: #C77FD4;
     box-shadow: 0 0 16px rgba(154, 56, 161, 0.9);
+}
+
+.dot-tooltip {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.50);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 10px;
+    font-family: Helvetica, sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1001;
+}
+
+.progress-dot:hover .dot-tooltip {
+    opacity: 1;
 }
 

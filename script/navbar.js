@@ -8,7 +8,23 @@ const dots = [];
 sections.forEach((section, index) => {
     const dot = document.createElement('div');
     dot.classList.add('progress-dot');
-    
+
+    let sectionTitle = '';
+    if (index === 0) {
+        sectionTitle = 'NYC Subway';
+    } else {
+        const titleElement = section.querySelector('.section-title');
+        if (titleElement) {
+            sectionTitle = titleElement.textContent;
+        }
+    }
+
+    // Create tooltip element
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('dot-tooltip');
+    tooltip.textContent = sectionTitle;
+    dot.appendChild(tooltip);
+
     dot.addEventListener('click', () => {
         if (index === 0) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -17,11 +33,11 @@ sections.forEach((section, index) => {
             const sectionHeight = section.offsetHeight;
             const sectionCenter = sectionTop + (sectionHeight / 2);
             const targetScroll = sectionCenter - (window.innerHeight / 2);
-            
+
             window.scrollTo({ top: targetScroll, behavior: 'smooth' });
         }
     });
-    
+
     progressContainer.appendChild(dot);
     dots.push(dot);
 });
