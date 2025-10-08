@@ -55,19 +55,20 @@ function positionDots() {
 function updateProgress() {
     const maxScroll = getMaxScroll();
     const currentScroll = window.scrollY;
-    
+
     const progressPercent = (currentScroll / maxScroll) * 100;
     progressFill.style.height = progressPercent + '%';
-    
+
     dots.forEach((dot) => {
         const dotPercent = parseFloat(dot.dataset.percent);
         const fadeZone = 10;
+        const tolerance = 1; 
         const distance = dotPercent - progressPercent;
-        
+
         if (progressPercent < dotPercent - fadeZone) {
             dot.style.opacity = 0.4;
             dot.classList.remove('active');
-        } else if (progressPercent < dotPercent) {
+        } else if (progressPercent < dotPercent - tolerance) {
             const distanceIntoFadeZone = fadeZone - distance;
             const fadeProgress = distanceIntoFadeZone / fadeZone;
             dot.style.opacity = 0.4 + (fadeProgress * 0.6);

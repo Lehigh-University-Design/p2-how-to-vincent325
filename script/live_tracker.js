@@ -90,7 +90,12 @@ function getButtonColor(button) {
 
 // Load train data
 function loadTrainData(trainLine, buttonColor) {
-    var apiUrl = 'http://localhost:3000/api/train/' + trainLine;
+    // Detect if running locally or in production
+    var API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:3000' 
+        : 'https://mta-live-tracker.onrender.com';
+
+    var apiUrl = API_BASE_URL + '/api/train/' + trainLine;
     
     fetch(apiUrl)
         .then(function(response) {
