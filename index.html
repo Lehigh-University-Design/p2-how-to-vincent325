@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="styles/section_6.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/animate_columns.css">
+    <link rel="stylesheet" href="styles/live_tracker.css">
+    <link rel="stylesheet" href="styles/magnify.css">
+    <title>How to Ride the NYC Subway</title>
 </head>
 <body>
+    <!-- <div class="hero">
+        <div class="hero-title">
+            <div class="hero-small">HOW TO RIDE THE</div>
+            <div class="hero-big">NYC</div>
+            <div class="hero-big">SUBWAY</div>
+        </div>
+    </div> -->
+
     <div class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/subway_no_watermark.mp4" type="video/mp4">
+        </video>
         <div class="hero-title">
             <div class="hero-small">HOW TO RIDE THE</div>
             <div class="hero-big">NYC</div>
@@ -44,7 +56,7 @@
                 </div>
                 
                 <div class="visual-column">
-                    <img id="subway-map" src="assets/subway-map.png" alt="Subway map">
+                    <img id="subway-map" src="assets/subway-map.jpg" alt="Subway map">
                     <p class="image-caption">The MTA app shows real-time arrivals</p>
                 </div>
             </div>
@@ -56,28 +68,150 @@
             <header class="section-header">
                 <div class="step-line">
                     <span class="step-number red">2</span>
-                    <span class="station-name">GRAND CENTRAL - 42 St</span>
+                    <span class="station-name">59 St-Columbus Circle</span>
                     <span class="progress-dots">● ● ○ ○ ○ ○</span>
                 </div>
-                <h2 class="section-title"></h2>
+                <h2 class="section-title">Payment Methods</h2>
             </header>
 
             <div class="two-columns">
                 <div class="visual-column">
-                    <img src="assets/metrocard-machine.jpg" alt="">
-                    <p class="image-caption"></p>
+                    <div class="image-container aspect-standard">
+                        <img id="turnstile" src="assets/turnstile.jpg" alt="OMNY payment reader at turnstile">
+                    </div>
+                    <p class="image-caption">Paying for the subway with OMNY</p>
                 </div>
                 
                 <div class="column-content">
-                    <h3></h3>
-                    <p></p>
-                    
+                    <h3>Ways to Pay</h3>
+                    <p>The fare is $2.90 per ride. You can pay using OMNY (tap your phone or contactless card) or a MetroCard. OMNY automatically caps weekly fares at $34 after 12 rides, making it the most convenient option for visitors and regular riders alike.</p>
+
                     <div class="tips-box">
-                        <h4></h4>
+                        <h4>Payment Options:</h4>
                         <ul>
-                            <li></li>
+                            <li><strong>OMNY:</strong> Tap your phone (Apple/Google Pay) or contactless credit/debit card directly on the reader</li>
+                            <li><strong>MetroCard:</strong> Purchase at station booths or machines. Add money or unlimited rides (7-day for $34, 30-day for $132)</li>
+                            <li><strong>Free transfers:</strong> You get one free transfer between subway and bus within 2 hours</li>
+                            <li><strong>Reduced fare:</strong> Available for seniors (65+) and people with disabilities</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="section-3">
+        <div class="container">
+            <header class="section-header">
+                <div class="step-line">
+                    <span class="step-number red">3</span>
+                    <span class="station-name">34 St-Penn Station</span>
+                    <span class="progress-dots">● ● ● ○ ○ ○</span>
+                </div>
+                <h2 class="section-title">Navigating the Station</h2>
+            </header>
+
+            <div class="two-columns">
+                <div class="column-content">
+                    <h3>Finding Your Way</h3>
+                    <p>Each station has clear signage to help you navigate. Look for train line indicators (numbers or letters in colored circles) and directional signs. Pay attention to whether you need an Uptown (north) or Downtown (south) platform before you swipe in.</p>
+
+                    <div class="tips-box">
+                        <h4>Navigation Tips:</h4>
+                        <ul>
+                            <li><strong>Platform direction:</strong> Uptown/Bronx goes north, Downtown/Brooklyn goes south</li>
+                            <li><strong>Express vs Local:</strong> Express (diamond symbol) skips stations, Local (circle) stops at all stations</li>
+                            <li><strong>Transfers:</strong> Look for black and white "Transfer" signs to connect between lines</li>
+                            <li><strong>Exit signs:</strong> Green signs show street exits, follow them to avoid getting lost</li>
+                            <li><strong>Platform signs:</strong> Digital boards show arrival times and service alerts</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="visual-column">
+                    <div class="image-container aspect-standard">
+                        <img id="station-signs" src="assets/station-signs.jpg" alt="Subway station directional signs">
+                    </div>
+                    <p class="image-caption">Follow the signs to find your platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="light-section" id="section-4">
+        <div class="container">
+            <header class="section-header">
+                <div class="step-line">
+                    <span class="step-number green">4</span>
+                    <span class="station-name">Union Square - 14 St</span>
+                    <span class="progress-dots">● ● ● ● ○ ○</span>
+                </div>
+                <h2 class="section-title">Riding Etiquette & Safety</h2>
+            </header>
+
+            <div class="two-columns">
+                <div class="visual-column">
+                    <div class="image-container aspect-standard">
+                        <img id="subway-car" src="assets/subway-car.jpg" alt="Inside a subway car">
+                    </div>
+                    <p class="image-caption">A typical subway car during rush hour</p>
+                </div>
+                
+                <div class="column-content">
+                    <h3>Be a Good Rider</h3>
+                    <p>The subway moves 5.5 million people daily. Following basic etiquette makes the ride better for everyone. Move to the center of the car, let people exit before boarding, and keep your belongings close. Stand clear of closing doors - forcing them causes delays for everyone.</p>
+
+                    <div class="tips-box">
+                        <h4>Etiquette & Safety:</h4>
+                        <ul>
+                            <li><strong>Priority seating:</strong> Give up your seat for elderly, pregnant, or disabled riders</li>
+                            <li><strong>Backpacks:</strong> Remove and hold them by your feet during crowded rides</li>
+                            <li><strong>Music & calls:</strong> Use headphones and keep conversations quiet</li>
+                            <li><strong>Stand right, walk left:</strong> On escalators, stand to the right</li>
+                            <li><strong>Stay alert:</strong> Keep valuables secure and be aware of your surroundings</li>
+                            <li><strong>Emergency:</strong> Use the intercom button to contact the conductor</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="dark-section" id="section-5">
+        <div class="container">
+            <header class="section-header">
+                <div class="step-line">
+                    <span class="step-number green">5</span>
+                    <span class="station-name">Atlantic Av-Barclays Ctr</span>
+                    <span class="progress-dots">● ● ● ● ● ○</span>
+                </div>
+                <h2 class="section-title">Dealing with Service Changes</h2>
+            </header>
+
+            <div class="two-columns">
+                <div class="column-content">
+                    <h3>When Things Don't Go as Planned</h3>
+                    <p>Service changes are common, especially on weekends and late nights. The MTA performs maintenance regularly, and unexpected delays can happen. Stay informed through the MTA app, station announcements, or service advisory posters to avoid getting stranded.</p>
+
+                    <div class="tips-box">
+                        <h4>Handling Disruptions:</h4>
+                        <ul>
+                            <li><strong>Weekend service:</strong> Many lines run differently on weekends - always check before traveling</li>
+                            <li><strong>Real-time updates:</strong> MTA app and Google Maps show live service status</li>
+                            <li><strong>Alternative routes:</strong> Learn multiple ways to reach your destination</li>
+                            <li><strong>Service advisories:</strong> Orange posters at stations explain planned work</li>
+                            <li><strong>Delays:</strong> "Signal problems" and "train traffic" are common - be patient</li>
+                            <li><strong>Late night:</strong> Some stations close; service runs less frequently after midnight</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="visual-column">
+                    <div class="image-container aspect-standard">
+                        <img id="service-advisory" src="assets/service-advisory.jpg" alt="Service advisory poster">
+                    </div>
+                    <p class="image-caption">Service advisories are posted throughout stations</p>
                 </div>
             </div>
         </div>
@@ -114,7 +248,7 @@
             </div>
 
             <div class="modal-overlay" id="modal-overlay"></div>
-            
+
             <div class="modal " id="modal">
                 <button class="close-button">&times;</button>
                 <h2 class="modal-title">Loading...</h2>
@@ -129,5 +263,6 @@
 
     <script src="script/animate_columns.js"></script>
     <script src="script/live_tracker.js"></script>
+    <script src="script/magnify.js"></script>
 </body>
 </html>

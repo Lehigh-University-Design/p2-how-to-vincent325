@@ -103,5 +103,3 @@ const output = {
 const jsonString = JSON.stringify(output, null, 2);
 fs.writeFileSync('train_data.json', jsonString, 'utf8');
 
-
-
