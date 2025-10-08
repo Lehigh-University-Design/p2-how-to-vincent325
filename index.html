@@ -11,6 +11,28 @@
     <link rel="stylesheet" href="styles/navbar.css">
     <title>How to Ride the NYC Subway</title>
 </head>
+
+<!-- Magnify Modal -->
+<div class="magnify-overlay" id="magnify-overlay"></div>
+<div class="magnify-modal" id="magnify-modal">
+    <button class="magnify-close" id="magnify-close">&times;</button>
+    <h2 class="magnify-title">NYC Subway Map Magnifier</h2>
+    <div class="magnify-grid">
+        <div class="magnify-left">
+            <h3>Original Map</h3>
+            <div class="magnify-img-wrapper" id="magnify-img-wrapper">
+                <img id="magnify-img" src="assets/subway-map.jpg" alt="Subway map">
+                <div class="magnify-box" id="magnify-box"></div>
+            </div>
+        </div>
+        <div class="magnify-right">
+            <h3>4x Magnified View</h3>
+            <div class="magnify-zoom" id="magnify-zoom"></div>
+        </div>
+    </div>
+</div>
+
+
 <body>
 
     <div class="progress-container">
@@ -58,7 +80,8 @@
                 </div>
                 
                 <div class="visual-column">
-                    <img id="subway-map" src="assets/subway-map.jpg" alt="Subway map">
+                    <img id="subway-map" src="assets/subway-map.jpg" alt="Subway map" title="Click to magnify">
+                    <div class="click-text">CLICK TO MAGNIFY</div> 
                     <p class="image-caption">The MTA app shows real-time arrivals</p>
                 </div>
             </div>

@@ -258,6 +258,35 @@ body {
     height: auto;
 }
 
+/* Make subway map clickable with hover effects */
+#section-1 .visual-column {
+    position: relative;
+    width: 82%;
+}
+
+/* Hide the click text normally */
+.click-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* When hovering, show the text and darken image */
+#section-1 .visual-column:hover .click-text {
+    display: block;
+}
+
+#section-1 .visual-column:hover #subway-map {
+    filter: brightness(0.5);
+    cursor: pointer;
+}
+
+
 .visual-column .image-caption {
     font-size: 12px;
     text-align: center;
