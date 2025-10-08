@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="styles/animate_columns.css">
     <link rel="stylesheet" href="styles/live_tracker.css">
     <link rel="stylesheet" href="styles/magnify.css">
+    <link rel="stylesheet" href="styles/carousel.css">
+    <link rel="stylesheet" href="styles/navbar.css">
     <title>How to Ride the NYC Subway</title>
 </head>
 <body>
+
+    <div class="progress-container">
+        <div class="progress-line-bg"></div>
+        <div class="progress-line-fill"></div>
+    </div>
+
+
     <div class="hero">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="assets/subway_no_watermark.mp4" type="video/mp4">
@@ -141,10 +150,27 @@
 
             <div class="two-columns">
                 <div class="visual-column">
-                    <div class="image-container aspect-standard">
-                        <img id="subway-car" src="assets/subway-car.jpg" alt="Inside a subway car">
+                    <div class="carousel-container">
+                        <div class="carousel-images">
+                            <img class="carousel-image active" src="assets/current.png">
+                            <img class="carousel-image" src="assets/future_outside.png">
+                            <img class="carousel-image" src="assets/future_inside.png">
+                            <img class="carousel-image" src="assets/2000s.png">
+                            <img class="carousel-image" src="assets/1970s.png">
+                            <img class="carousel-image" src="assets/1960s.jpg">
+                            <img class="carousel-image" src="assets/1950s.png">
+                            <img class="carousel-image" src="assets/1915.png">
+                            <img class="carousel-image" src="assets/1904.png">
+                        </div>
+
+                        <button class="carousel-button prev">‹</button>
+                        <button class="carousel-button next">›</button>
+
+                        <div class="carousel-counter">
+                            <span class="carousel-current">1</span> / <span class="carousel-total">9</span>
+                        </div>
                     </div>
-                    <p class="image-caption">A typical subway car during rush hour</p>
+                    <p class="image-caption">Navigate through subway scenes</p>
                 </div>
                 
                 <div class="column-content">
@@ -155,8 +181,6 @@
                         <h4>Etiquette & Safety:</h4>
                         <ul>
                             <li><strong>Priority seating:</strong> Give your seat to elderly, pregnant, or disabled riders</li>
-                            <li><strong>Backpacks:</strong> Remove and hold by your feet during crowded rides</li>
-                            <li><strong>Stand right, walk left:</strong> On escalators</li>
                             <li><strong>Stay alert:</strong> Keep valuables secure and be aware of surroundings</li>
                         </ul>
                     </div>
@@ -185,18 +209,30 @@
                         <h4>Must-Visit Stops:</h4>
                         <ul>
                             <li><strong>Times Square (N/Q/R/W/1/2/3):</strong> Broadway theaters and bright lights</li>
-                            <li><strong>Brooklyn Bridge-City Hall (4/5/6):</strong> Walk the iconic bridge</li>
-                            <li><strong>Museum of Natural History (B/C):</strong> World-class museum on Upper West Side</li>
-                            <li><strong>Coney Island-Stillwell (D/F/N/Q):</strong> Beach, boardwalk, and amusement parks</li>
-                            <li><strong>Grand Central (4/5/6/7/S):</strong> Historic terminal with dining and shopping</li>
-                            <li><strong>Prospect Park (B/Q/S):</strong> Brooklyn's premier green space</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="visual-column">
-                    <div class="image-container aspect-standard">
-                        <img id="service-advisory" src="assets/service-advisory.jpg" alt="Service advisory poster">
+                    <div class="carousel-container">
+                        <div class="carousel-images">
+                            <img class="carousel-image active" src="assets/current.png">
+                            <img class="carousel-image" src="assets/future_outside.png">
+                            <img class="carousel-image" src="assets/future_inside.png">
+                            <img class="carousel-image" src="assets/2000s.png">
+                            <img class="carousel-image" src="assets/1970s.png">
+                            <img class="carousel-image" src="assets/1960s.jpg">
+                            <img class="carousel-image" src="assets/1950s.png">
+                            <img class="carousel-image" src="assets/1915.png">
+                            <img class="carousel-image" src="assets/1904.png">
+                        </div>
+
+                        <button class="carousel-button prev">‹</button>
+                        <button class="carousel-button next">›</button>
+
+                        <div class="carousel-counter">
+                            <span class="carousel-current">1</span> / <span class="carousel-total">9</span>
+                        </div>
                     </div>
                     <p class="image-caption">The subway takes you anywhere in the city</p>
                 </div>
@@ -270,5 +306,7 @@
     <script src="script/animate_columns.js"></script>
     <script src="script/live_tracker.js"></script>
     <script src="script/magnify.js"></script>
+    <script src="script/carousel.js"></script>
+    <script src="script/navbar.js"></script>
 </body>
 </html>

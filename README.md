@@ -11,3 +11,14 @@
 
 https://ny.curbed.com/2017/9/20/16305388/nyc-subway-history-mta-train-cars 
 
+
+
+
+Deploy on render
+find images
+rewrite text
+fix progress bar 
+    add hover text
+    add 7 train icon at top
+magnify
+
