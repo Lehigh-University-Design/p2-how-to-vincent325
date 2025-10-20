@@ -10,7 +10,7 @@
 }
 
 .magnify-overlay.show {
-    display: block;
+    display: flex;
 }
 
 .magnify-modal {
@@ -53,7 +53,7 @@
 }
 
 .magnify-title {
-    color: white;
+    color: rgb(255, 230, 154);
     margin: 0 50px 20px 0;
     font-size: 32px;
     font-weight: bold;

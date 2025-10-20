@@ -71,3 +71,26 @@
     font-weight: 600;
     z-index: 10;
 }
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+    font-weight: 500;
+    z-index: 10;
+    text-align: center;
+    transform: translateY(100%);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-container:hover .caption {
+    transform: translateY(0);
+}
