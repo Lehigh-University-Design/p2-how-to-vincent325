@@ -1,3 +1,4 @@
+import { TRAIN_TO_ENDPOINT_MAP } from './config.js';
 import { pool } from './database.js';
 import { stationMap, orderedStations, getTrainArrivalData } from './mtaService.js';
 
@@ -24,6 +25,7 @@ export async function getUserFavoriteStations(req, res) {
             SELECT *
             FROM favorite_stations
             WHERE user_id = $1
+            ORDER BY created_at DESC
         `;
 
         const result = await pool.query(userEntries, [uuid]);
@@ -42,7 +44,6 @@ export async function getUserFavoriteStations(req, res) {
         })
 
         const results = await Promise.all(promises);
-        console.log(`Batching Stats: ${favorites.length} favorites → ${uniqueTrains.size} API calls (${favorites.length - uniqueTrains.size} saved)`);
         // Map of endpoint to fetched data
         const endpointsData = new Map();
         for (const result of results) {
