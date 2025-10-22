@@ -12,6 +12,7 @@ const TRAIN_COLORS = {
     'mta-blue': '#08179C'
 };
 
+
 // Get DOM elements
 const modal = document.getElementById('modal');
 const modalOverlay = document.querySelector('.modal-overlay');
@@ -168,7 +169,7 @@ const createArrivalSection = (direction, times) => {
     section.appendChild(label);
 
     if (times?.length > 0) {
-        times.slice(0, 3).forEach(time => {
+        times.forEach(time => {
             const timeDiv = document.createElement('div');
             timeDiv.className = 'time';
             timeDiv.textContent = `• ${time} min`;
