@@ -14,23 +14,23 @@ carousels.forEach((carouselContainer) => {
 
     totalCounter.textContent = totalImages;
 
+    // Add click handlers for images with data-location
     images.forEach((img) => {
         const url = img.getAttribute('data-location');
         if (url) {
             img.style.cursor = 'pointer';
-            img.onclick = (e) => {
-                const clickUrl = img.getAttribute('data-location'); 
-                window.open(clickUrl, '_blank');
+            img.onclick = () => {
+                window.open(url, '_blank');
             };
         }
     });
 
-    function updateCaption() {
+    const updateCaption = () => {
         const activeImage = images[currentIndex];
-        caption.textContent = activeImage.getAttribute('data-caption') || '';
-    }
+        caption.textContent = activeImage.getAttribute('data-caption') ?? '';
+    };
 
-    function updateCarousel() {
+    const updateCarousel = () => {
         images.forEach((img, index) => {
             if (index === currentIndex) {
                 img.classList.add('active');
@@ -43,9 +43,9 @@ carousels.forEach((carouselContainer) => {
 
         currentCounter.textContent = currentIndex + 1;
         updateCaption();
-    }
+    };
 
-    function changeSlide(direction) {
+    const changeSlide = (direction) => {
         currentIndex += direction;
 
         if (currentIndex < 0) {
@@ -55,15 +55,10 @@ carousels.forEach((carouselContainer) => {
         }
 
         updateCarousel();
-    }
+    };
 
-    prevButton.addEventListener('click', function() {
-        changeSlide(-1);
-    });
-
-    nextButton.addEventListener('click', function() {
-        changeSlide(1);
-    });
+    prevButton.addEventListener('click', () => changeSlide(-1));
+    nextButton.addEventListener('click', () => changeSlide(1));
 
     updateCarousel();
 });

@@ -9,25 +9,26 @@
     <link rel="stylesheet" href="styles/magnify.css">
     <link rel="stylesheet" href="styles/carousel.css">
     <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/favorites.css">
     <title>How to Ride the NYC Subway</title>
 </head>
 
 <!-- Magnify Modal -->
-<div class="magnify-overlay" id="magnify-overlay"></div>
+<div class="magnify-overlay"></div>
 <div class="magnify-modal" id="magnify-modal">
-    <button class="magnify-close" id="magnify-close">&times;</button>
+    <button class="magnify-close">&times;</button>
     <h2 class="magnify-title">NYC Subway Map Magnifier</h2>
     <div class="magnify-grid">
         <div class="magnify-left">
             <h3>Original Map</h3>
-            <div class="magnify-img-wrapper" id="magnify-img-wrapper">
-                <img id="magnify-img" src="assets/subway-map.jpg" alt="Subway map">
-                <div class="magnify-box" id="magnify-box"></div>
+            <div class="magnify-img-wrapper">
+                <img class="magnify-img" src="assets/subway-map.jpg" alt="Subway map">
+                <div class="magnify-box"></div>
             </div>
         </div>
         <div class="magnify-right">
             <h3>4x Magnified View</h3>
-            <div class="magnify-zoom" id="magnify-zoom"></div>
+            <div class="magnify-zoom"></div>
         </div>
     </div>
 </div>
@@ -102,7 +103,7 @@
             <div class="two-columns">
                 <div class="visual-column">
                     <div class="image-container aspect-standard">
-                        <img id="turnstile" src="assets/turnstile.jpg" alt="OMNY payment reader at turnstile">
+                        <img class="section-image payment-image" src="assets/turnstile.jpg" alt="OMNY payment reader at turnstile">
                     </div>
                     <p class="image-caption">Tap your card or phone on the OMNY reader</p>
                 </div>
@@ -137,7 +138,7 @@
             <div class="two-columns">
                 <div class="column-content">
                     <h3>Find Your Platform</h3>
-                    <p>Check the train line (letter/number) and direction before entering the turnstile. Some stations have separate entrances for each direction—you can't switch sides without paying again.</p>
+                    <p>Check the train line (letter/number) and direction before entering the turnstile. Some stations have separate entrances for each direction.</p>
 
                     <div class="tips-box">
                         <h4>Key Things to Know:</h4>
@@ -145,14 +146,13 @@
                             <li><strong>Uptown = North</strong> (toward the Bronx), <strong>Downtown = South</strong> (toward Brooklyn). Manhattan is in between.</li>
                             <li>Stand back from the platform edge, especially when trains arrive.</li>
                             <li>Follow signs for your train line and direction. Look for colored circles matching your train.</li>
-                            <li>Some stations have multiple levels or exits. Check signs carefully to avoid getting lost.</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="visual-column">
                     <div class="image-container aspect-standard">
-                        <img id="station-signs" src="assets/section_three_sign.jpg" alt="Subway station directional signs">
+                        <img class="section-image navigation-image" src="assets/section_three_sign.jpg" alt="Subway station directional signs">
                     </div>
                     <p class="image-caption">Follow the colored circles and direction signs</p>
                 </div>
@@ -202,12 +202,11 @@
                     <p>The subway moves 5.5 million people daily. Trains can be crowded during rush hours (7-9 AM, 5-7 PM) but usually arrive every 2-10 minutes. Modern cars have digital displays showing upcoming stops, while older cars have posted maps above the doors.</p>
 
                     <div class="tips-box">
-                        <h4>Practical Tips:</h4>
+                        <h4>Etiquette Tips:</h4>
                         <ul>
                             <li><strong>Let people exit first</strong> before you board. Stand to the side of the doors.</li>
                             <li><strong>Move to the center</strong> of the car if it's crowded. Don't block the doors.</li>
-                            <li><strong>Hold your bag</strong> in front of you in crowded cars. Keep your phone in sight.</li>
-                            <li><strong>Stops and Maps</strong> are on most modern trains to help with navigation.
+                            <li><strong>Give seats</strong> to elderly, disabled, and pregnant passengers.</li>
                         </ul>
                     </div>
                 </div>
@@ -237,8 +236,6 @@
                             <li><strong>Times Square-42 St:</strong> Theater district, shopping. Access to 7 lines.</li>
                             <li><strong>Grand Central-42 St:</strong> Historic terminal, Midtown offices. Access to 4/5/6/7/S trains.</li>
                             <li><strong>34 St-Penn Station:</strong> Major transit hub, near Madison Square Garden. Access to 1/2/3/A/C/E lines.</li>
-                            <li><strong>Cortlandt St (Oculus):</strong> Financial district, near World Trade Center. Access to 1/2/3/A/C/E lines.</li>
-                            <li><strong>Atlantic Av-Barclays Ctr:</strong> Brooklyn attractions, Barclays Center. Access to 2/3/4/5/B/D/N/Q/R lines.</li>
                         </ul>
                     </div>
                 </div>
@@ -315,15 +312,29 @@
                 <button class="train-button mta-blue" data-train="SI">SI</button>
             </div>
 
-            <div class="modal-overlay" id="modal-overlay"></div>
+            
+
+            <div class="modal-overlay"></div>
+
+            <div class="modal-overlay"></div>
+            <div class="modal" id="favorites-modal">
+                <div class="modal-content">
+                    <button class="close-button">&times;</button>
+                    <h2 class="modal-title">My Favorite Stations</h2>
+
+                    <div class="favorites-container">
+
+                    </div>
+                </div>
+            </div>
 
             <div class="modal" id="modal">
                 <div class="modal-content">
                     <button class="close-button">&times;</button>
-                    <h2 class="modal-title" id="modal-title">Loading...</h2>
-                    
-                    <div id="train-line-container" class="train-line-container">
-                        <div id="train-line" class="train-line"></div>
+                    <h2 class="modal-title">Loading...</h2>
+
+                    <div class="train-line-container">
+                        <div class="train-line"></div>
                     </div>
                 </div>
             </div>
@@ -334,5 +345,6 @@
     <script src="script/magnify.js"></script>
     <script src="script/carousel.js"></script>
     <script src="script/navbar.js"></script>
+    <script src="script/favorites.js"></script>
 </body>
 </html>

@@ -80,7 +80,7 @@
     display: inline-block;  /* Fits to content size */
 }
 
-#magnify-img {
+.magnify-img {
     display: block;
     max-width: 350px;
     height: auto;

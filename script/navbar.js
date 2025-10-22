@@ -9,15 +9,9 @@ sections.forEach((section, index) => {
     const dot = document.createElement('div');
     dot.classList.add('progress-dot');
 
-    let sectionTitle = '';
-    if (index === 0) {
-        sectionTitle = 'NYC Subway';
-    } else {
-        const titleElement = section.querySelector('.section-title');
-        if (titleElement) {
-            sectionTitle = titleElement.textContent;
-        }
-    }
+    const sectionTitle = index === 0
+        ? 'NYC Subway'
+        : section.querySelector('.section-title')?.textContent ?? '';
 
     // Create tooltip element
     const tooltip = document.createElement('div');
@@ -42,16 +36,16 @@ sections.forEach((section, index) => {
     dots.push(dot);
 });
 
-function getMaxScroll() {
+const getMaxScroll = () => {
     return document.documentElement.scrollHeight - window.innerHeight;
-}
+};
 
-function positionDots() {
+const positionDots = () => {
     const maxScroll = getMaxScroll();
-    
+
     sections.forEach((section, index) => {
         const dot = dots[index];
-        
+
         if (index === 0) {
             dot.style.top = '0%';
             dot.dataset.percent = 0;
@@ -61,24 +55,24 @@ function positionDots() {
             const sectionCenter = sectionTop + (sectionHeight / 2);
             const activationScroll = sectionCenter - (window.innerHeight / 2);
             const dotPercent = Math.max(0, (activationScroll / maxScroll) * 100);
-            
-            dot.style.top = dotPercent + '%';
+
+            dot.style.top = `${dotPercent}%`;
             dot.dataset.percent = dotPercent;
         }
     });
-}
+};
 
-function updateProgress() {
+const updateProgress = () => {
     const maxScroll = getMaxScroll();
     const currentScroll = window.scrollY;
 
     const progressPercent = (currentScroll / maxScroll) * 100;
-    progressFill.style.height = progressPercent + '%';
+    progressFill.style.height = `${progressPercent}%`;
 
     dots.forEach((dot) => {
         const dotPercent = parseFloat(dot.dataset.percent);
         const fadeZone = 10;
-        const tolerance = 1; 
+        const tolerance = 1;
         const distance = dotPercent - progressPercent;
 
         if (progressPercent < dotPercent - fadeZone) {
@@ -94,7 +88,7 @@ function updateProgress() {
             dot.classList.add('active');
         }
     });
-}
+};
 
 window.addEventListener('scroll', updateProgress);
 
