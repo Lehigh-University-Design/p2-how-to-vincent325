@@ -3,8 +3,6 @@ import GtfsRealtimeBindings from 'gtfs-realtime-bindings';
 import { getEndpoint } from './config.js';
 import fs from 'fs';
 
-console.log("Loading station names...");
-
 const stationMap = new Map();
 const orderedStations = new Map();
 
@@ -24,17 +22,13 @@ try {
     console.error("Error loading station names:", error);
 }
 
+export { stationMap, orderedStations };
 
-export async function getTrainArrivals(req, res) {
-    try {
-        const trainLine = req.params.trainLine.toUpperCase();
-
-        const endpoint = getEndpoint(trainLine);
+export async function getTrainArrivalData(trainLine) {
+    
+    const endpoint = getEndpoint(trainLine);
         if (!endpoint) {
-            return res.status(404).json({
-                error: `Unknown train line: ${trainLine}`,
-                availableTrains: '1,2,3,4,5,6,7,A,C,E,B,D,F,M,G,J,Z,N,Q,R,W,L,SI'
-            });
+            throw new Error(`No endpoint found for train line: ${trainLine}`);
         }
 
         const response = await fetch(endpoint);
@@ -47,7 +41,7 @@ export async function getTrainArrivals(req, res) {
         const now = Date.now();
 
         for (const entity of feed.entity) {
-            if (!entity.tripUpdate) continue;;
+            if (!entity.tripUpdate) continue;
             if (entity.tripUpdate.trip.routeId !== trainLine) continue;
 
             for (const stop of entity.tripUpdate.stopTimeUpdate) {
@@ -77,11 +71,13 @@ export async function getTrainArrivals(req, res) {
                     stations[stopId].southbound.push(minutesAway);
                 }
 
-                stations[stopId].northbound.sort((a, b) => a - b);
-                stations[stopId].southbound.sort((a, b) => a - b);
-
             };
         };
+
+        for (const stopId in stations) {
+            stations[stopId].northbound.sort((a, b) => a - b);
+            stations[stopId].southbound.sort((a, b) => a - b);
+        }
 
         const result = [];
         const orderedStops = orderedStations.get(trainLine);
@@ -98,16 +94,7 @@ export async function getTrainArrivals(req, res) {
             }
         }
 
-        res.json({
-            trainLine,
-            stations: result,
-        })
-
-        // res.json(feed);
-    } catch (error) {
-        console.error("Error fetching train arrivals:", error);
-        return res.status(500).json({ error: 'Internal server error' });
-    }
+        return result;
 }
 
-
+            

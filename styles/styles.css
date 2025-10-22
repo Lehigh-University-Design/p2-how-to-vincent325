@@ -85,7 +85,7 @@ body {
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 100px 200px 100px 200px;
+    padding: 100px 200px;
 }
 
 /* Content Section Header ONLY */
