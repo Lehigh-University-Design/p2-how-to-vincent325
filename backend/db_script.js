@@ -1,11 +1,21 @@
 // Script to get all of database info and print it out to console
 import 'dotenv/config';
-import { pool, initializeDatabase } from './database.js';
+import pg from 'pg';
+const { Pool } = pg;
+
+// Check if --render flag is passed
+const useRender = process.argv.includes('--render');
+const dbUrl = useRender ? process.env.RENDER_DATABASE_URL : process.env.DATABASE_URL;
+
+console.log(`\nConnecting to: ${useRender ? 'RENDER' : 'LOCAL'} database\n`);
 
 async function getAllDatabaseInfo() {
-    try {
-        await initializeDatabase();
+    const pool = new Pool({
+        connectionString: dbUrl,
+        ...(useRender && { ssl: { rejectUnauthorized: false } })
+    });
 
+    try {
         // Get all favorite stations
         const res = await pool.query('SELECT * FROM favorite_stations ORDER BY created_at DESC');
 
